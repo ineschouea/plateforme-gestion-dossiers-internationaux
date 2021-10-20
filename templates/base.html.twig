@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body background="img/bg.jpg">
+       <style>
+            body {
+
+background-color:white;
+background-image:url(img/bg3.jpg);
+background-repeat:no-repeat;
+margin-right:80px;
+
+
+}
+h1{
+ margin:40px;
+ padding:15px;
+ }
+h4 {
+ margin:0px;
+ padding:10px;
+ background-color:#FFFAFA;
+ }
+ #rech{
+  margin-top:-70px;
+ }
+ </style>
+
+ <script>
+function RedirectionJavascript(){
+  document.location.href="http://127.0.0.1:8003/recherche/43"; 
+}
+</script>
+ </script>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <a class="navbar-brand" href="/">HOME</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+     <li class="nav-item active">
+        <a class="nav-link" href="/access">Liste d'attente</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/validation">Projets validés
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+     
+     
+    
+    </ul>
+  <div>
+      <img src='{{ asset("img/logo.png") }}' id="rech">
+  </div>
+  </nav>
+ 
+   {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+
+  
+ </body>
+</html>
+

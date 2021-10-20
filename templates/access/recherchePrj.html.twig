@@ -1,0 +1,75 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+<style>
+#rech{
+    margin-left:300px;
+    margin-top:10px;
+}
+.nav-link{
+    font-size:16px;
+}
+</style>
+  
+ <h1> <B>Liste de demandes: </B></h1>
+ {% for validation in projet %}
+<validation>
+    <B><h4> Demande :
+     <div style="text-align:center">
+
+</div>
+     
+   </h4>  </B>
+       <div class="row">
+    <div class="col-sm-9"> 
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id de convention</th>
+                <td>{{ validation.getIdConv()}}</td>
+
+            </tr>
+            <tr>
+                <th>Titre du projet</th>
+                <td>{{ validation.getTitreProjet()}}</td>
+            </tr>
+             <tr>
+                <th>Université</th>
+                <td>{{ validation.getUniversite()}}</td>
+
+            </tr>
+            <tr>
+                  <th>Nom de l'enseignant</th>
+                <td>{{ validation.getNom()}}</td>
+            </tr>
+           
+             <tr>
+                  <th>Prénom de l'enseignant</th>
+                <td>{{ validation.getPrenom()}}</td>
+            </tr>
+            <tr>
+                  <th>Email de l'enseignant</th>
+                <td>{{ validation.getAddMail()}}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+    
+    </div> 
+    </div> 
+
+<a href="/projet/{{ validation.id }}" class="btn btn-secondary my-2 my-sm-0">Consulter état d'avancement</a>
+<a href="/pdfAvnc/{{ validation.id }}" class="btn btn-warning my-2 my-sm-0">Imprimer état d'avancement</a>
+<a href="/recherchePrj" class="btn btn-success">Chercher Projet</a>
+
+</div>
+</validation>
+{% endfor %}
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+
+
+
+{% endblock %}

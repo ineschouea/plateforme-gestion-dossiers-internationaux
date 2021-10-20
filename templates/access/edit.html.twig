@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccessController!{% endblock %}
+
+{% block body %}
+<style>
+body {
+
+background-color:white;
+background-image:url(../img/bg3.jpg);
+background-repeat:no-repeat;
+margin-right:80px;
+
+
+}
+#rech{
+  margin-top:8px;
+}
+.decision,#suppDes,.label{
+    margin-left:100px;
+}
+.label{
+    margin-top:100px;
+    font-size:30px;
+    font-weight:bold;
+}
+.decision{
+    width:400px;
+}
+</style>
+{{ form_start(formConv)}}
+{{ form_row(formConv.AvisDRI, {'attr':{'placeholder':"Decission finale", 'class':"decision", 'id':"dri"},'label':'Decission finale','label_attr':{'class':'label'}})}}
+
+<button type="submit" class="btn btn-danger my-2 my-sm-0" id="suppDes">Enregistrer</button>
+{{ form_end(formConv)}}
+
+
+{% endblock %}

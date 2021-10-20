@@ -1,0 +1,624 @@
+{% extends 'base.html.twig'%}
+
+
+{% block body %}
+
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+	<br>
+	<br>
+	<div onclick="logout()" id="logout">
+		<form id="myForm1" method="POST">
+			<input type="text" name="action" value="logout" class="login_logout">
+
+			<div class="logout">
+				<div class="message">
+					Log out
+				</div>
+				<div class="fontawesome-ok confirm"></div>
+			</div>
+
+		</form>
+
+
+	</div>
+
+	<table class="bounceIn" style="width:65%;height:90%;" align="center">
+
+		<tr>
+			<th colspan="5" style="background-color:#5E1D55;color:white;">
+				<h3>Users</h3>
+			</th>
+		</tr>
+
+		<tr style="background-color:#32A9EE;color:white;">
+			<th>Id</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Email</th>
+			<th>Rôle</th>
+
+		</tr>
+		{% for user in users %}
+
+
+			<tr>
+				<td>
+					<b>{{ user.id  }}</b>
+				</td>
+				<td>{{ user.nom  }}</td>
+				<td>{{ user.prenom  }}</td>
+				<td>{{ user.email  }}</td>
+				<td>{{ user.role  }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<br>
+
+
+	<div class="button fadeInUp">
+		<button type="button" onclick="ajouter()" class="btn btn-success">Ajouter</button>
+		<button type="button" onclick="supprimer()" class="btn btn-danger">Supprimer</button>
+		<button type="button" onclick="modifier()" class="btn btn-warning">Modifier</button>
+	</div>
+	<div id="icon" onclick="icon()">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-up" viewbox="0 0 16 16">
+			<path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+			<path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+		</svg>
+	</div>
+	<br>
+
+	<div class="rotateInUpLeft supprimer">
+		<form method="POST">
+			<div class="form-group">
+				<label for="id" class="text-danger">Id  :
+				</label>
+				<input type="number" required name="id" class="form-control supp">
+				<br>
+				<input type="text" name="action" class="action" value="supprimer">
+
+
+				<button type="submit" class="btn btn-danger">Supprimer</button>
+
+			</div>
+		</form>
+
+	</div>
+	<div id="modifier" class="rotateInUpLeft">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<form id="login-form1" class="form" action="" method="post">
+
+
+			<div class="container">
+				<div id="login-row" class="justify-content-center align-items-center">
+
+					<div class="row ">
+						<div class="mar">
+							<div class="form-group test ">
+								<label for="nom" class="text-secondary
+									
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														">Nom :
+								</label>
+								<input type="text" required name="nom" class="form-control">
+							</div>
+						</div>
+						<div class="mar">
+
+
+							<div class="form-group">
+								<label for="prenom" class="text-secondary
+									
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														">Prenom :
+								</label>
+								<input type="text" required name="prenom" class="form-control">
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row ">
+						<div class="mar">
+							<div class="form-group test ">
+								<label for="nom" class="text-secondary
+									
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														">Email :
+								</label>
+								<input type="email" required name="email" class="form-control">
+							</div>
+						</div>
+						<div class="mar">
+
+
+							<div class="form-group">
+								<label for="role" class="text-secondary
+									
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														">Rôle
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		 :
+								</label>
+								<input type="text" required name="role" class="form-control">
+
+
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="mar">
+							<div class="form-group test ">
+								<label for="nom" class="text-secondary
+									
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														">Password</label>
+								<input type="password" name="password" class="form-control">
+							</div>
+						</div>
+						<div class="mar">
+
+
+							<div class="form-group">
+								<label for="id" class="text-secondary
+										
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													">
+									Id:</label>
+								<input type="number" required name="id" class="form-control">
+
+
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group button ok1 ">
+						<input type="text" name="action" class="action" value="modifier">
+
+
+						<input type="submit" class="btn btn-warning ok1 " value="modifier">
+					</div>
+
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+</div>
+
+<div class="rotateInUpLeft" id="ajouter">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<form id="login-form" class="form" action="" method="post">
+
+
+		<div class="container">
+			<div id="login-row" class="justify-content-center align-items-center">
+
+				<div class="row ">
+					<div class="mar">
+						<div class="form-group test ">
+							<label for="nom" class="text-success">Nom :
+							</label>
+							<input type="text" required name="nom" class="form-control">
+						</div>
+					</div>
+					<div class="mar">
+
+
+						<div class="form-group">
+							<label for="prenom" class="text-success">Prenom :
+							</label>
+							<input type="text" required name="prenom" class="form-control">
+
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row ">
+					<div class="mar">
+						<div class="form-group test ">
+							<label for="nom" class="text-success">Email :
+							</label>
+							<input type="email" required name="email" class="form-control">
+						</div>
+					</div>
+					<div class="mar">
+
+
+						<div class="form-group">
+							<label for="role" class="text-success">Rôle
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															 :
+							</label>
+							<input type="text" required name="role" class="form-control">
+
+
+						</div>
+					</div>
+				</div>
+				<div class="row ">
+					<div class="mar">
+						<div class="form-group test ">
+							<label for="password" class="text-success">Password :
+							</label>
+							<input type="password" required name="password" class="form-control">
+						</div>
+					</div>
+
+					<div class="mar">
+						<br>
+
+
+						<div class="form-group button ok ">
+							<input type="text" name="action" class="action" value="ajouter">
+
+							<input type="submit" class="btn btn-success" value="ajouter">
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+</div></div></div><style>#icon {
+	cursor: pointer;
+	width: 65%;
+	margin: auto;
+	display: none;
+}
+#icon svg,
+#icon path {
+	color: #32A9EE;
+	width: 40px;
+	height: 35px;
+
+	float: right;
+}
+#modifier {
+	display: none;
+}
+label {
+	font-weight: bold;
+}
+
+
+.ok1 {
+	margin: auto;
+}
+
+.button {
+	width: 65%;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+}
+.action {
+	display: none;
+}
+#ajouter {
+	display: none;
+
+}
+.supp {
+	width: 100px
+}
+.supprimer {
+	width: max-content;
+	margin: auto;
+	display: none;
+}
+
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 0;
+}
+.mar {
+	display: block;
+}
+
+th {
+	padding: 10px;
+	border: 1px solid black;
+
+
+}
+.ok {
+	margin-top: 9px;
+}
+h3 {
+	margin: auto;
+	width: max-content;
+
+}
+.mar {
+	margin: 0 10px;
+}
+#login-row {
+	width: max-content;
+	margin: auto;
+}
+
+td {
+	padding: 10px;
+	border: 1px solid black;
+	text-align: left;
+}
+
+tr:nth-child(even) {
+	background-color: white;
+}
+
+tr:nth-child(odd) {
+	background-color: #eee;
+}
+
+[class*=fontawesome-]:before {
+	font-family: "FontAwesome", sans-serif;
+}
+
+#logout {
+	cursor: pointer;
+}
+
+.logout {
+	margin-top: 20px;
+	position: absolute;
+	left: 5%;
+	top: 10%;
+	overflow: hidden;
+	box-sizing: border-box;
+	width: 120px;
+	height: 100px;
+}
+.logout:hover .message {
+	transition: -webkit-transform 300ms linear;
+	transform: perspective(800px) rotateY(45deg);
+}
+.logout:hover .confirm {
+	transition: left 300ms linear;
+
+	cursor: pointer;
+}
+
+.message {
+	width: 100%;
+	background-color: #17A2B8;
+	color: white;
+
+
+	border-radius: 10px;
+	padding: 40px 10px;
+	text-align: center;
+	font-size: 20px;
+	box-shadow: inset 0 0 20px #ddd;
+	transition: -webkit-transform 100ms linear;
+	transform-origin: 0 50%;
+	box-sizing: border-box;
+	height: 100%;
+	font-weight: bold;
+}
+#rech{
+	margin-top: 8px;
+}
+.confirm {
+	position: absolute;
+	background: #8fc800;
+	/* Old browsers */
+	background: -moz-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #8fc800), color-stop(100%, #8fc800));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+	/* IE10+ */
+	color: white;
+	border-radius: 10px;
+	height: 100%;
+	width: 60px;
+	font-size: 30px;
+	box-sizing: border-box;
+
+
+}
+.login_logout {
+	display: none;
+}
+
+
+.bounceIn {
+	-webkit-animation-name: bounceIn;
+	animation-name: bounceIn;
+	-webkit-animation-duration: 0.75s;
+	animation-duration: 0.75s;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+@-webkit-keyframes bounceIn {
+	0,
+	20%,
+	40%,
+	60%,
+	80%,
+	100% {
+		-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	20% {
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes bounceIn {
+	0,
+	20%,
+	40%,
+	60%,
+	80%,
+	100% {
+		-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	20% {
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+.fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+.rotateInUpLeft {
+	-webkit-animation-name: rotateInUpLeft;
+	animation-name: rotateInUpLeft;
+	-webkit-animation-duration: 0.6s;
+	animation-duration: 0.6s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+@-webkit-keyframes rotateInUpLeft {
+	0% {
+		-webkit-transform-origin: left bottom;
+		transform-origin: left bottom;
+		-webkit-transform: rotate3d(0, 0, 1, 45deg);
+		transform: rotate3d(0, 0, 1, 45deg);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform-origin: left bottom;
+		transform-origin: left bottom;
+		-webkit-transform: none;
+		transform: none;
+		opacity: 1;
+	}
+}
+@keyframes rotateInUpLeft {
+	0% {
+		-webkit-transform-origin: left bottom;
+		transform-origin: left bottom;
+		-webkit-transform: rotate3d(0, 0, 1, 45deg);
+		transform: rotate3d(0, 0, 1, 45deg);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform-origin: left bottom;
+		transform-origin: left bottom;
+		-webkit-transform: none;
+		transform: none;
+		opacity: 1;
+	}
+}</style><script>function supprimer() {
+document.getElementById("icon").style.display = "block";
+document.getElementsByClassName("button")[0].style.display = "none";
+document.getElementsByClassName("supprimer")[0].style.display = "block";
+
+
+}
+function ajouter() {
+document.getElementById("icon").style.display = "block";
+document.getElementsByClassName("button")[0].style.display = "none";
+document.getElementById("ajouter").style.display = "block";
+
+
+}
+function modifier() {
+document.getElementById("icon").style.display = "block";
+document.getElementsByClassName("button")[0].style.display = "none";
+document.getElementById("modifier").style.display = "block";
+
+
+}
+function icon() {
+document.getElementById("icon").style.display = "none";
+document.getElementsByClassName("button")[0].style.display = "flex";
+document.getElementsByClassName("supprimer")[0].style.display = "none";
+document.getElementById("ajouter").style.display = "none";
+document.getElementById("modifier").style.display = "none";
+
+
+}
+function logout() {
+
+document.getElementById("myForm1").submit();
+}</script>{% endblock %}

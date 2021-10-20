@@ -1,0 +1,304 @@
+{% extends 'base.html.twig'%}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+
+
+	<style>
+		h1 {
+			margin: 10px;
+			padding: 140px;
+		}
+		#button {
+			font-weight: bold;
+			font-size: 20px;
+			margin-top: 12px;
+
+		}
+		.logout {
+			width: max-content;
+			margin: auto;
+			border-radius: 0;
+		}
+		.logout button {
+			font-size: 24px;
+			margin-top: -18px
+		}
+		.login_logout {
+			display: none;
+		}
+    #rech{
+      margin-top: 8px;
+    }
+	</style>
+
+	{% if logged == null %}
+
+
+		<div style="text-align: right"></div>
+		<div style="text-align:center">
+			<h1 class="slide-rotate-hor-top">LE SECRET DE VOTRE RÉUSSITE
+				<div style="text-align:center">
+					<button class="btn btn-primary my-2 my-sm-0 slide-rotate-hor-top" id="button" type="submit" onclick="popup()">COMMENCER</button>
+
+
+				</div>
+			</h1>
+		</div>
+
+	{% else %}
+		<div onclick="logout()" id="logout">
+			<form id="myForm1" method="POST">
+				<input type="text" name="action" value="logout" class="login_logout">
+
+				<div class="logout">
+					<div class="message">
+						Log out
+					</div>
+					<div class="fontawesome-ok confirm"></div>
+				</div>
+
+			</form>
+
+
+		</div>
+		<br>
+		<div>
+			<h1 class="swing" style="text-align:center">
+				WELCOME</h1>
+		</div>
+
+	{% endif %}
+	<div id="popup" class="slideInUp">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+		<div id="login">
+			<div class="container">
+				<div id="login-row" class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+						<div id="login-box" class="col-md-12">
+							<form id="login-form" class="form" action="" method="POST">
+								<input type="text" name="action" value="login" class="login_logout">
+
+								<h3 class="text-center text-info">Login</h3>
+								<div class="form-group">
+									<label for="email" class="text-info">Email:</label><br>
+									<input type="email" required name="email" id="email" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="password" class="text-info">Password:</label><br>
+									<input type="password" required name="password" id="password" class="form-control">
+								</div>
+								<br>
+								<div class="form-group button">
+
+									<input type="submit" class="btn btn-info btn-md" value="submit">
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<style>
+		#popup {
+			display: none;
+			margin-top: -100px
+		}
+
+		#login .container #login-row #login-column #login-box {
+			margin-top: 0;
+			max-width: 600px;
+			height: 320px;
+			border: 1px solid #9C9C9C;
+			background-color: #EAEAEA;
+			border-radius: 20px;
+
+		}
+		#login .container #login-row #login-column #login-box #login-form {
+			padding: 20px;
+
+		}
+		#login .container #login-row #login-column #login-box #login-form #register-link {
+			margin-top: -85px;
+		}
+		.button {
+			margin: auto;
+		}
+		[class*=fontawesome-]:before {
+			font-family: "FontAwesome", sans-serif;
+		}
+
+		#logout {
+			cursor: pointer;
+		}
+
+		.logout {
+			margin-top: 20px;
+			position: absolute;
+			left: 45%;
+			overflow: hidden;
+			box-sizing: border-box;
+			width: 120px;
+			height: 100px;
+		}
+		.logout:hover .message {
+			transition: -webkit-transform 300ms linear;
+			transform: perspective(800px) rotateY(45deg);
+		}
+		.logout:hover .confirm {
+			transition: left 300ms linear;
+
+			cursor: pointer;
+		}
+
+		.message {
+			width: 100%;
+			background-color: #17A2B8;
+			color: white;
+
+
+			border-radius: 10px;
+			padding: 40px 10px;
+			text-align: center;
+			font-size: 20px;
+			box-shadow: inset 0 0 20px #ddd;
+			transition: -webkit-transform 100ms linear;
+			transform-origin: 0 50%;
+			box-sizing: border-box;
+			height: 100%;
+			font-weight: bold;
+		}
+
+		.confirm {
+			position: absolute;
+			background: #8fc800;
+			/* Old browsers */
+			background: -moz-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+			/* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%, #8fc800), color-stop(100%, #8fc800));
+			/* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+			/* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+			/* Opera 11.10+ */
+			background: -ms-linear-gradient(left, #8fc800 0%, #8fc800 100%);
+			/* IE10+ */
+			color: white;
+			border-radius: 10px;
+			height: 100%;
+			width: 60px;
+			font-size: 30px;
+			box-sizing: border-box;
+
+
+		}
+		.slide-rotate-hor-top {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+		@-webkit-keyframes zoomInDown {
+			0% {
+				opacity: 0;
+				-webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+				transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+				-webkit-animation-timing-function: cubic-bezier(1,1,1,1);
+				animation-timing-function: cubic-bezier(1, 1, 1, 1);
+			}
+			60% {
+				opacity: 1;
+				-webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+				transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+				-webkit-animation-timing-function: cubic-bezier(1,1,1, 1);
+				animation-timing-function: cubic-bezier(1,1,1,1);
+			}
+		}
+		@keyframes zoomInDown {
+			0% {
+				opacity: 0;
+				-webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+				transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+				-webkit-animation-timing-function: cubic-bezier(1,1,1,1);
+				animation-timing-function: cubic-bezier(1,1,1,1);
+			}
+			60% {
+				opacity: 1;
+				-webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+				transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+				-webkit-animation-timing-function: cubic-bezier(1,1,1,1);
+				animation-timing-function: cubic-bezier(1,1,1,1);
+			}
+		}
+
+		@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+		@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre');
+		.slideInUp {
+			-webkit-animation-name: slideInUp;
+			animation-name: slideInUp;
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+		@-webkit-keyframes slideInUp {
+			0% {
+				-webkit-transform: translateY(100%);
+				transform: translateY(100%);
+				visibility: visible;
+			}
+			100% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0);
+			}
+		}
+		@keyframes slideInUp {
+			0% {
+				-webkit-transform: translateY(100%);
+				transform: translateY(100%);
+				visibility: visible;
+			}
+			100% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0);
+			}
+		}
+		h1 {
+			font-family: "Averia Sans Libre", cursive;
+			font-weight: bold;
+			font-style: italic;
+			text-align: center;
+			font-size: 35px;
+			color: black;
+			text-shadow: rgba(255, 255, 255, 0.03) 2px 2px 2px;
+		}
+	</style>
+
+	<script>
+		function popup() {
+
+if (document.getElementById("button").innerText == "COMMENCER") {
+document.getElementById("popup").style.display = "block";
+document.getElementById("button").innerText = "X";
+document.getElementById("button").style.backgroundColor = "red";
+} else {
+document.getElementById("popup").style.display = "none";
+document.getElementById("button").innerText = "COMMENCER";
+document.getElementById("button").style.backgroundColor = "blue";
+}
+
+
+}
+function logout() {
+
+document.getElementById("myForm1").submit();
+}
+	</script>
+{% endblock %}

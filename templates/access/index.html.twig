@@ -1,0 +1,91 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+  
+ <h1> <B>Liste de demandes: </B></h1>
+ {% for convention in conventions %}
+<convention>
+    <B><h4> Demande N° 1 :
+     <div style="text-align:center">
+   <a href="/delete/{{ convention.id }}" class="btn btn-danger my-2 my-sm-0" onclick="return confirm('Voulez vous vraiment supprimer la convention?')">supprimer demande</a>
+
+</div>
+     
+   </h4>  </B>
+       <div class="row">
+    <div class="col-sm-9"> 
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id convention</th>
+                <td>{{ convention.getIdConv()}}</td>
+
+            </tr>
+            <tr>
+                <th>Avis DEVE</th>
+                <td>{{ convention.getAvisDeve() }}</td>
+            </tr>
+             <tr>
+                <th>Avis CEVU</th>
+                <td>{{ convention.getAvisCevu() }}</td>
+
+            </tr>
+            <tr>
+                <th>Avis CA</th>
+                <td>{{ convention.getAvisCa() }}</td>
+            </tr>
+           
+             <tr>
+                <th>Avis DRI</th>
+                <td>{{ convention.getAvisDri() }}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+    <div class="navigation">
+            {{ knp_pagination_render(conventions) }}
+        </div>
+    </div> 
+    </div> 
+
+<a href="/edit/{{ convention.id }}" class="btn btn-primary my-2 my-sm-0">Decission</a>
+<a href="/pdf/{{ convention.id }}" class="btn btn-secondary my-2 my-sm-0">Imprimer demande</a>
+<a href="/conv/{{ convention.id }}" class="btn btn-warning my-2 my-sm-0">Consulter demande</a>
+</div>
+</convention>
+{% endfor %}
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+ 
+
+
+<script>
+$(document).ready(function(){
+$("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+    
+    $("[data-toggle=tooltip]").tooltip();
+});
+</script>
+
+
+
+
+
+{% endblock %}
